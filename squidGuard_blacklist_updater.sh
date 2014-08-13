@@ -4,8 +4,10 @@ cd $TARGET_DIR || exit
 
 wget http://www.shallalist.de/Downloads/shallalist.tar.gz -O $TARGET_DIR/shallalist.tar.gz
 
-sudo -u squid tar xzf $TARGET_DIR/shallalist.tar.gz
-sudo -u squid /usr/bin/squidGuard -c /etc/squid/squidGuard.conf  -C all
+tar xzf $TARGET_DIR/shallalist.tar.gz
+sleep 5
+squidGuard -c /etc/squid/squidGuard.conf  -C all
+chown -R squid.squid /var/squidGuard
 
 systemctl restart squid.service
 
